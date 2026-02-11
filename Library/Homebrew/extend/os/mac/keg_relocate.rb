@@ -139,7 +139,7 @@ module OS
         end
       end
 
-      VARIABLE_REFERENCE_RX = T.let(/^@(loader_|executable_|r)path/, Regexp)
+      VARIABLE_REFERENCE_RX = /^@(loader_|executable_|r)path/
 
       sig { params(file: MachOShim, linkage_type: Symbol, resolve_variable_references: T::Boolean, block: T.proc.params(arg0: String).void).void }
       def each_linkage_for(file, linkage_type, resolve_variable_references: false, &block)
@@ -230,13 +230,11 @@ module OS
         brewed_perl = runtime_dependencies&.any? { |dep| dep["full_name"] == "perl" && dep["declared_directly"] }
         perl_path = if brewed_perl || name == "perl"
           "#{HOMEBREW_PREFIX}/opt/perl/bin/perl"
-        elsif tab.built_on.present?
-          perl_path = "/usr/bin/perl#{tab.built_on["preferred_perl"]}"
-
-          # For `:all` bottles, we could have built this bottle with a Perl we don't have.
-          # Such bottles typically don't have strict version requirements.
-          perl_path = "/usr/bin/perl#{MacOS.preferred_perl_version}" unless File.exist?(perl_path)
-
+        elsif tab.built_on.present? &&
+              (preferred_perl_version = tab.built_on["preferred_perl"].presence) &&
+              preferred_perl_version.match?(/^\d+\.\d+$/) &&
+              (perl_path = "/usr/bin/perl#{preferred_perl_version}") &&
+              File.exist?(perl_path)
           perl_path
         else
           "/usr/bin/perl#{MacOS.preferred_perl_version}"
@@ -267,7 +265,7 @@ module OS
 
       private
 
-      CELLAR_RX = T.let(%r{\A#{HOMEBREW_CELLAR}/(?<formula_name>[^/]+)/[^/]+}, Regexp)
+      CELLAR_RX = %r{\A#{HOMEBREW_CELLAR}/(?<formula_name>[^/]+)/[^/]+}
       private_constant :CELLAR_RX
 
       # Replace HOMEBREW_CELLAR references with HOMEBREW_PREFIX/opt references

@@ -11,6 +11,8 @@ module Utils
   module Curl
     include SystemCommand::Mixin
     extend SystemCommand::Mixin
+    include Utils::Output::Mixin
+    extend Utils::Output::Mixin
     extend T::Helpers
 
     requires_ancestor { Kernel }
@@ -58,9 +60,11 @@ module Utils
     sig { returns(String) }
     def curl_path
       @curl_path ||= T.let(
-        Utils.popen_read(curl_executable, "--homebrew=print-path").chomp.presence,
+        Utils.popen_read(curl_executable, "--homebrew=print-path").chomp,
         T.nilable(String),
       )
+      odie("Failed to get curl path") if @curl_path.blank?
+      @curl_path
     end
 
     sig { void }
@@ -556,27 +560,34 @@ module Utils
       etag = headers["etag"][ETAG_VALUE_REGEX, 1] if headers["etag"].present?
       content_length = headers["content-length"]
 
-      if status.success?
-        open_args = {}
-        content_type = headers["content-type"]
+      if status.success? && (file_path = file.path)
+        file_hash = Digest::SHA256.file(file_path).hexdigest if hash_needed
 
-        # Use the last `Content-Type` header if there is more than one instance
-        # in the response
-        content_type = content_type.last if content_type.is_a?(Array)
+        # Only load file contents for text-based content comparison on small files.
+        # Large binary files don't benefit from content comparison.
+        max_read_size = 100 * 1024 * 1024
+        if File.size(file_path) <= max_read_size
+          open_args = {}
+          content_type = headers["content-type"]
 
-        # Try to get encoding from Content-Type header
-        # TODO: add guessing encoding by <meta http-equiv="Content-Type" ...> tag
-        if content_type &&
-           (match = content_type.match(/;\s*charset\s*=\s*([^\s]+)/)) &&
-           (charset = match[1])
-          begin
-            open_args[:encoding] = Encoding.find(charset)
-          rescue ArgumentError
-            # Unknown charset in Content-Type header
+          # Use the last `Content-Type` header if there is more than one instance
+          # in the response
+          content_type = content_type.last if content_type.is_a?(Array)
+
+          # Try to get encoding from Content-Type header
+          # TODO: add guessing encoding by <meta http-equiv="Content-Type" ...> tag
+          if content_type &&
+             (match = content_type.match(/;\s*charset\s*=\s*([^\s]+)/)) &&
+             (charset = match[1])
+            begin
+              open_args[:encoding] = Encoding.find(charset)
+            rescue ArgumentError
+              # Unknown charset in Content-Type header
+            end
           end
+
+          file_contents = File.read(file_path, **open_args)
         end
-        file_contents = File.read(T.must(file.path), **open_args)
-        file_hash = Digest::SHA256.hexdigest(file_contents) if hash_needed
       end
 
       {
@@ -598,7 +609,13 @@ module Utils
     sig { returns(Version) }
     def curl_version
       @curl_version ||= T.let({}, T.nilable(T::Hash[String, Version]))
-      @curl_version[curl_path] ||= Version.new(T.must(curl_output("-V").stdout[/curl (\d+(\.\d+)+)/, 1]))
+      curl_v_stdout = curl_output("-V").stdout
+      version = curl_v_stdout[/curl (\d+(?:\.\d+)+)/, 1]
+      if version
+        @curl_version[curl_path] ||= Version.new(version)
+      else
+        odie("Failed to parse curl version from #{curl_v_stdout}")
+      end
     end
 
     sig { returns(T::Boolean) }

@@ -1,4 +1,6 @@
-# Copilot Instructions for Homebrew/brew
+# Agent Instructions for Homebrew/brew
+
+Most importantly, run `brew lgtm` to verify any file edits before prompting for input to run all style checks and tests.
 
 This is a Ruby based repository with Bash scripts for faster execution.
 It is primarily responsible for providing the `brew` command for the Homebrew package manager.
@@ -25,7 +27,7 @@ Please follow these guidelines when contributing:
 
 - Write new code (using Sorbet `sig` type signatures and `typed: strict` for new files, but never for RSpec/test/`*_spec.rb` files)
 - Write new tests (avoid more than one `:integration_test` per file for speed).
-  Use only one `expect` assertion per test.
+  Write fast tests by preferring a single `expect` per unit test and combine expectations in a single test when it is an integration test or has non-trivial `before` for test setup.
 - Keep comments minimal; prefer self-documenting code through strings, variable names, etc. over more comments.
 
 ## Repository Structure
@@ -50,3 +52,5 @@ Please follow these guidelines when contributing:
 5. Suggest changes to the `docs/` folder when appropriate
 6. Follow software principles such as DRY and YAGNI.
 7. Keep diffs as minimal as possible.
+8. Prefer shelling out via `HOMEBREW_BREW_FILE` instead of requiring `cmd/` or `dev-cmd` when composing brew commands.
+9. Inline new or existing methods as methods or local variables unless they are reused 2+ times or needed for unit tests.

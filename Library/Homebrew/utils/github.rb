@@ -15,7 +15,7 @@ module GitHub
   extend SystemCommand::Mixin
   extend Utils::Output::Mixin
 
-  MAX_PER_PAGE = T.let(100, Integer)
+  MAX_PER_PAGE = 100
 
   def self.issues(repo:, **filters)
     uri = url_to("repos", repo, "issues")
@@ -629,7 +629,7 @@ module GitHub
 
     confidence = version ? "are" : "might be"
     duplicates_message = <<~EOS
-      These #{state} pull requests #{confidence} duplicates:
+      These #{"#{state} " if state}pull requests #{confidence} duplicates:
       #{pull_requests.map { |pr| "#{pr["title"]} #{pr["html_url"]}" }.join("\n")}
     EOS
     error_message = <<~EOS
@@ -709,13 +709,15 @@ module GitHub
         add_auth_token_to_url!(remote_url)
       else
         begin
-          remote_url, username = forked_repo_info!(tap_remote_repo, org: args.fork_org)
+          url, username = forked_repo_info!(tap_remote_repo, org: args.fork_org)
         rescue *API::ERRORS => e
           commits.each do |commit|
             commit[:sourcefile_path].atomic_write(commit[:old_contents])
           end
           odie "Unable to fork: #{e.message}!"
         end
+        odie "Failed to get forked repository URL for #{tap_remote_repo}!" unless url
+        remote_url = url
       end
 
       next if args.dry_run?

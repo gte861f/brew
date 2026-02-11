@@ -40,9 +40,6 @@ module Prism
 
     def lex_file(*_arg0); end
 
-    sig { params(source: String).returns(T::Array[T.untyped]) }
-    def lex_ripper(source); end
-
     sig { params(source: String, serialized: String, freeze: T.nilable(T::Boolean)).returns(Prism::ParseResult) }
     def load(source, serialized, freeze = T.unsafe(nil)); end
 
@@ -132,6 +129,8 @@ class Prism::AliasGlobalVariableNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -207,6 +206,8 @@ class Prism::AliasMethodNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -284,6 +285,8 @@ class Prism::AlternationPatternNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -357,6 +360,8 @@ class Prism::AndNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -446,6 +451,8 @@ class Prism::ArgumentsNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -523,6 +530,8 @@ class Prism::ArrayNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Array[Prism::Node]) }
   def elements; end
@@ -616,6 +625,8 @@ class Prism::ArrayPatternNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -694,6 +705,8 @@ class Prism::AssocNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -766,6 +779,8 @@ class Prism::AssocSplatNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -826,6 +841,8 @@ class Prism::BackReferenceReadNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -913,6 +930,8 @@ class Prism::BeginNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T.nilable(Prism::ElseNode)) }
   def else_clause; end
 
@@ -994,6 +1013,8 @@ class Prism::BlockArgumentNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T.nilable(Prism::Node)) }
   def expression; end
 
@@ -1052,6 +1073,8 @@ class Prism::BlockLocalVariableNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -1132,6 +1155,8 @@ class Prism::BlockNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -1206,6 +1231,8 @@ class Prism::BlockParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -1293,6 +1320,8 @@ class Prism::BlockParametersNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -1368,6 +1397,8 @@ class Prism::BreakNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -1453,6 +1484,8 @@ class Prism::CallAndWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -1583,6 +1616,8 @@ class Prism::CallNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T.nilable(String)) }
   def equal; end
@@ -1719,6 +1754,8 @@ class Prism::CallOperatorWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -1830,6 +1867,8 @@ class Prism::CallOrWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -1938,6 +1977,8 @@ class Prism::CallTargetNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -2021,6 +2062,8 @@ class Prism::CapturePatternNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -2111,6 +2154,8 @@ class Prism::CaseMatchNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T.nilable(Prism::ElseNode)) }
   def else_clause; end
 
@@ -2200,6 +2245,8 @@ class Prism::CaseNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T.nilable(Prism::ElseNode)) }
   def else_clause; end
@@ -2298,6 +2345,8 @@ class Prism::ClassNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(String) }
   def end_keyword; end
 
@@ -2386,6 +2435,7 @@ class Prism::ClassVariableAndWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -2476,6 +2526,7 @@ class Prism::ClassVariableOperatorWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -2554,6 +2605,7 @@ class Prism::ClassVariableOrWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -2621,6 +2673,8 @@ class Prism::ClassVariableReadNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -2671,6 +2725,8 @@ class Prism::ClassVariableTargetNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -2736,6 +2792,8 @@ class Prism::ClassVariableWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3022,6 +3080,7 @@ class Prism::ConstantAndWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3112,6 +3171,7 @@ class Prism::ConstantOperatorWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3190,6 +3250,7 @@ class Prism::ConstantOrWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3268,6 +3329,8 @@ class Prism::ConstantPathAndWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3352,6 +3415,8 @@ class Prism::ConstantPathNode < ::Prism::Node
 
   sig { returns(Prism::Location) }
   def delimiter_loc; end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3442,6 +3507,8 @@ class Prism::ConstantPathOperatorWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -3511,6 +3578,8 @@ class Prism::ConstantPathOrWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3596,6 +3665,8 @@ class Prism::ConstantPathTargetNode < ::Prism::Node
   sig { returns(Prism::Location) }
   def delimiter_loc; end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -3674,6 +3745,8 @@ class Prism::ConstantPathWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -3736,6 +3809,8 @@ class Prism::ConstantReadNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -3792,6 +3867,8 @@ class Prism::ConstantTargetNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -3863,6 +3940,8 @@ class Prism::ConstantWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -6058,6 +6137,8 @@ class Prism::DefNode < ::Prism::Node
   sig { returns(Prism::Location) }
   def def_keyword_loc; end
 
+  def each_child_node; end
+
   sig { returns(T.nilable(String)) }
   def end_keyword; end
 
@@ -6172,6 +6253,8 @@ class Prism::DefinedNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -6858,6 +6941,8 @@ class Prism::ElseNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(String) }
   def else_keyword; end
 
@@ -6950,6 +7035,8 @@ class Prism::EmbeddedStatementsNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -7019,6 +7106,8 @@ class Prism::EmbeddedVariableNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7099,6 +7188,8 @@ class Prism::EnsureNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(String) }
   def end_keyword; end
 
@@ -7157,6 +7248,8 @@ class Prism::FalseNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7232,6 +7325,8 @@ class Prism::FindPatternNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7311,6 +7406,8 @@ class Prism::FlipFlopNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T::Boolean) }
   def exclude_end?; end
 
@@ -7368,6 +7465,8 @@ class Prism::FloatNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7449,6 +7548,8 @@ class Prism::ForNode < ::Prism::Node
   sig { returns(T.nilable(Prism::Location)) }
   def do_keyword_loc; end
 
+  def each_child_node; end
+
   sig { returns(String) }
   def end_keyword; end
 
@@ -7521,6 +7622,8 @@ class Prism::ForwardingArgumentsNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -7561,6 +7664,8 @@ class Prism::ForwardingParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7620,6 +7725,8 @@ class Prism::ForwardingSuperNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7684,6 +7791,7 @@ class Prism::GlobalVariableAndWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7774,6 +7882,7 @@ class Prism::GlobalVariableOperatorWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7852,6 +7961,7 @@ class Prism::GlobalVariableOrWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -7919,6 +8029,8 @@ class Prism::GlobalVariableReadNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -7969,6 +8081,8 @@ class Prism::GlobalVariableTargetNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -8034,6 +8148,8 @@ class Prism::GlobalVariableWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -8119,6 +8235,8 @@ class Prism::HashNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T::Array[T.any(Prism::AssocNode, Prism::AssocSplatNode)]) }
   def elements; end
 
@@ -8203,6 +8321,8 @@ class Prism::HashPatternNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Array[Prism::AssocNode]) }
   def elements; end
@@ -8290,6 +8410,8 @@ class Prism::IfNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T.nilable(String)) }
   def end_keyword; end
@@ -8380,6 +8502,8 @@ class Prism::ImaginaryNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -8442,6 +8566,8 @@ class Prism::ImplicitNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -8487,6 +8613,8 @@ class Prism::ImplicitRestNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -8549,6 +8677,8 @@ class Prism::InNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -8661,6 +8791,8 @@ class Prism::IndexAndWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -8793,6 +8925,8 @@ class Prism::IndexOperatorWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -8913,6 +9047,8 @@ class Prism::IndexOrWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -9023,6 +9159,8 @@ class Prism::IndexTargetNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -9295,6 +9433,7 @@ class Prism::InstanceVariableAndWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -9385,6 +9524,7 @@ class Prism::InstanceVariableOperatorWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -9463,6 +9603,7 @@ class Prism::InstanceVariableOrWriteNode < ::Prism::Node
   def deconstruct_keys(keys); end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -9530,6 +9671,8 @@ class Prism::InstanceVariableReadNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -9580,6 +9723,8 @@ class Prism::InstanceVariableTargetNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -9645,6 +9790,8 @@ class Prism::InstanceVariableWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -9734,6 +9881,8 @@ class Prism::IntegerNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -9813,6 +9962,8 @@ class Prism::InterpolatedMatchLastLineNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Boolean) }
   def euc_jp?; end
@@ -9932,6 +10083,8 @@ class Prism::InterpolatedRegularExpressionNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T::Boolean) }
   def euc_jp?; end
 
@@ -10047,6 +10200,8 @@ class Prism::InterpolatedStringNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -10144,6 +10299,8 @@ class Prism::InterpolatedSymbolNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -10226,6 +10383,8 @@ class Prism::InterpolatedXStringNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -10284,6 +10443,8 @@ class Prism::ItLocalVariableReadNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -10324,6 +10485,8 @@ class Prism::ItParametersNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -10380,6 +10543,8 @@ class Prism::KeywordHashNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Array[T.any(Prism::AssocNode, Prism::AssocSplatNode)]) }
   def elements; end
@@ -10451,6 +10616,8 @@ class Prism::KeywordRestParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -10545,6 +10712,8 @@ class Prism::LambdaNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -10582,16 +10751,14 @@ class Prism::LambdaNode < ::Prism::Node
 end
 
 class Prism::LexCompat
-  def initialize(source, **options); end
+  def initialize(code, **options); end
 
+  def add_on_sp_tokens(tokens, source, data_loc, bom, eof_token); end
   def options; end
   def result; end
-  def source; end
 end
 
-class Prism::LexCompat::EndContentToken < ::Prism::LexCompat::Token
-  def ==(other); end
-end
+Prism::LexCompat::BOM_FLUSHED = T.let(T.unsafe(nil), TrueClass)
 
 module Prism::LexCompat::Heredoc
   class << self
@@ -10629,19 +10796,7 @@ class Prism::LexCompat::Heredoc::PlainHeredoc
   def tokens; end
 end
 
-class Prism::LexCompat::IdentToken < ::Prism::LexCompat::Token
-  def ==(other); end
-end
-
 class Prism::LexCompat::IgnoreStateToken < ::Prism::LexCompat::Token
-  def ==(other); end
-end
-
-class Prism::LexCompat::IgnoredNewlineToken < ::Prism::LexCompat::Token
-  def ==(other); end
-end
-
-class Prism::LexCompat::ParamToken < ::Prism::LexCompat::Token
   def ==(other); end
 end
 
@@ -10654,11 +10809,19 @@ class Prism::LexCompat::Result < ::Prism::Result
   def value; end
 end
 
-class Prism::LexCompat::Token < ::SimpleDelegator
+class Prism::LexCompat::Token < ::BasicObject
+  def initialize(array); end
+
+  def ==(other); end
   def event; end
   def location; end
+  def method_missing(name, *_arg1, **_arg2, &_arg3); end
   def state; end
   def value; end
+
+  private
+
+  def respond_to_missing?(name, include_private = T.unsafe(nil)); end
 end
 
 class Prism::LexResult < ::Prism::Result
@@ -10680,17 +10843,6 @@ class Prism::LexResult < ::Prism::Result
 
   sig { returns(T::Array[T.untyped]) }
   def value; end
-end
-
-class Prism::LexRipper
-  def initialize(source); end
-
-  def result; end
-  def source; end
-
-  private
-
-  def lex(source); end
 end
 
 class Prism::LocalVariableAndWriteNode < ::Prism::Node
@@ -10747,6 +10899,7 @@ class Prism::LocalVariableAndWriteNode < ::Prism::Node
   def depth; end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -10842,6 +10995,7 @@ class Prism::LocalVariableOperatorWriteNode < ::Prism::Node
   def depth; end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -10925,6 +11079,7 @@ class Prism::LocalVariableOrWriteNode < ::Prism::Node
   def depth; end
 
   def desugar; end
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -11005,6 +11160,8 @@ class Prism::LocalVariableReadNode < ::Prism::Node
   sig { returns(Integer) }
   def depth; end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -11068,6 +11225,8 @@ class Prism::LocalVariableTargetNode < ::Prism::Node
 
   sig { returns(Integer) }
   def depth; end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -11138,6 +11297,8 @@ class Prism::LocalVariableWriteNode < ::Prism::Node
 
   sig { returns(Integer) }
   def depth; end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -11397,6 +11558,8 @@ class Prism::MatchLastLineNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T::Boolean) }
   def euc_jp?; end
 
@@ -11503,6 +11666,8 @@ class Prism::MatchPredicateNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -11576,6 +11741,8 @@ class Prism::MatchRequiredNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -11652,6 +11819,8 @@ class Prism::MatchWriteNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -11695,6 +11864,8 @@ class Prism::MissingNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -11767,6 +11938,8 @@ class Prism::ModuleNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(String) }
   def end_keyword; end
@@ -11852,6 +12025,8 @@ class Prism::MultiTargetNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -11948,6 +12123,8 @@ class Prism::MultiWriteNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -12202,6 +12379,8 @@ class Prism::NextNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -12250,6 +12429,8 @@ class Prism::NilNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -12309,6 +12490,8 @@ class Prism::NoKeywordsParameterNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -12347,6 +12530,9 @@ class Prism::Node
   sig { params(block: T.proc.params(node: Prism::Node).returns(T::Boolean)).returns(T.nilable(Prism::Node)) }
   def breadth_first_search(&block); end
 
+  sig { params(block: T.proc.params(node: Prism::Node).returns(T::Boolean)).returns(T::Array[Prism::Node]) }
+  def breadth_first_search_all(&block); end
+
   def cached_end_code_units_column(cache); end
   def cached_end_code_units_offset(cache); end
   def cached_start_code_units_column(cache); end
@@ -12367,6 +12553,7 @@ class Prism::Node
   def deconstruct; end
 
   def deprecated(*replacements); end
+  def each_child_node; end
   def end_character_column; end
   def end_character_offset; end
   def end_column; end
@@ -12377,6 +12564,9 @@ class Prism::Node
 
   sig { abstract.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
+
+  def find(&block); end
+  def find_all(&block); end
 
   sig { abstract.returns(String) }
   def inspect; end
@@ -12499,6 +12689,8 @@ class Prism::NumberedParametersNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -12557,6 +12749,8 @@ class Prism::NumberedReferenceReadNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -12620,6 +12814,8 @@ class Prism::OptionalKeywordParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -12696,6 +12892,8 @@ class Prism::OptionalParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -12777,6 +12975,8 @@ class Prism::OrNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -12946,6 +13146,8 @@ class Prism::ParametersNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -13039,6 +13241,8 @@ class Prism::ParenthesesNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -13293,6 +13497,8 @@ class Prism::PinnedExpressionNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(Prism::Node) }
   def expression; end
 
@@ -13376,6 +13582,8 @@ class Prism::PinnedVariableNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -13456,6 +13664,8 @@ class Prism::PostExecutionNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -13544,6 +13754,8 @@ class Prism::PreExecutionNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -13621,6 +13833,8 @@ class Prism::ProgramNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -13691,6 +13905,8 @@ class Prism::RangeNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Boolean) }
   def exclude_end?; end
@@ -13776,6 +13992,8 @@ class Prism::RationalNode < ::Prism::Node
   sig { returns(Integer) }
   def denominator; end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -13830,6 +14048,8 @@ class Prism::RedoNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -13960,6 +14180,8 @@ class Prism::RegularExpressionNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Boolean) }
   def euc_jp?; end
@@ -14222,6 +14444,8 @@ class Prism::RequiredKeywordParameterNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -14280,6 +14504,8 @@ class Prism::RequiredParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -14346,6 +14572,8 @@ class Prism::RescueModifierNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(Prism::Node) }
   def expression; end
@@ -14432,6 +14660,8 @@ class Prism::RescueNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T::Array[Prism::Node]) }
   def exceptions; end
@@ -14528,6 +14758,8 @@ class Prism::RestParameterNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -14639,6 +14871,8 @@ class Prism::RetryNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -14700,6 +14934,8 @@ class Prism::ReturnNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -14759,6 +14995,8 @@ class Prism::SelfNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -14875,6 +15113,8 @@ class Prism::ShareableConstantNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(T::Boolean) }
   def experimental_copy?; end
 
@@ -14971,6 +15211,8 @@ class Prism::SingletonClassNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { returns(String) }
   def end_keyword; end
 
@@ -15010,6 +15252,8 @@ end
 class Prism::Source
   sig { params(source: String, start_line: Integer, offsets: T::Array[Integer]).void }
   def initialize(source, start_line = T.unsafe(nil), offsets = T.unsafe(nil)); end
+
+  def byte_offset(line, column); end
 
   sig { params(byte_offset: Integer).returns(Integer) }
   def character_column(byte_offset); end
@@ -15103,6 +15347,8 @@ class Prism::SourceEncodingNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -15159,6 +15405,8 @@ class Prism::SourceFileNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -15214,6 +15462,8 @@ class Prism::SourceLineNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -15272,6 +15522,8 @@ class Prism::SplatNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T.nilable(Prism::Node)) }
   def expression; end
@@ -15342,6 +15594,8 @@ class Prism::StatementsNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -15426,6 +15680,8 @@ class Prism::StringNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -15543,6 +15799,8 @@ class Prism::SuperNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -15639,6 +15897,8 @@ class Prism::SymbolNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -16191,204 +16451,205 @@ class Prism::Translation::Ripper < ::Prism::Compiler
   private
 
   def _dispatch_0; end
-  def _dispatch_1(_); end
-  def _dispatch_2(_, _); end
-  def _dispatch_3(_, _, _); end
-  def _dispatch_4(_, _, _, _); end
-  def _dispatch_5(_, _, _, _, _); end
-  def _dispatch_7(_, _, _, _, _, _, _); end
+  def _dispatch_1(arg); end
+  def _dispatch_2(arg, _); end
+  def _dispatch_3(arg, _, _); end
+  def _dispatch_4(arg, _, _, _); end
+  def _dispatch_5(arg, _, _, _, _); end
+  def _dispatch_7(arg, _, _, _, _, _, _); end
   def bounds(location); end
   def command?(node); end
   def compile_error(msg); end
   def dedent_string(string, width); end
-  def on_BEGIN(_); end
-  def on_CHAR(_); end
-  def on_END(_); end
-  def on___end__(_); end
-  def on_alias(_, _); end
-  def on_alias_error(_, _); end
-  def on_aref(_, _); end
-  def on_aref_field(_, _); end
-  def on_arg_ambiguous(_); end
-  def on_arg_paren(_); end
-  def on_args_add(_, _); end
-  def on_args_add_block(_, _); end
-  def on_args_add_star(_, _); end
+  def get_arguments_and_block(arguments_node, block_node); end
+  def on_BEGIN(arg); end
+  def on_CHAR(arg); end
+  def on_END(arg); end
+  def on___end__(arg); end
+  def on_alias(arg, _); end
+  def on_alias_error(arg, _); end
+  def on_aref(arg, _); end
+  def on_aref_field(arg, _); end
+  def on_arg_ambiguous(arg); end
+  def on_arg_paren(arg); end
+  def on_args_add(arg, _); end
+  def on_args_add_block(arg, _); end
+  def on_args_add_star(arg, _); end
   def on_args_forward; end
   def on_args_new; end
-  def on_array(_); end
-  def on_aryptn(_, _, _, _); end
-  def on_assign(_, _); end
-  def on_assign_error(_, _); end
-  def on_assoc_new(_, _); end
-  def on_assoc_splat(_); end
-  def on_assoclist_from_args(_); end
-  def on_backref(_); end
-  def on_backtick(_); end
-  def on_bare_assoc_hash(_); end
-  def on_begin(_); end
-  def on_binary(_, _, _); end
-  def on_block_var(_, _); end
-  def on_blockarg(_); end
-  def on_bodystmt(_, _, _, _); end
-  def on_brace_block(_, _); end
-  def on_break(_); end
-  def on_call(_, _, _); end
-  def on_case(_, _); end
-  def on_class(_, _, _); end
-  def on_class_name_error(_, _); end
-  def on_comma(_); end
-  def on_command(_, _); end
-  def on_command_call(_, _, _, _); end
-  def on_comment(_); end
-  def on_const(_); end
-  def on_const_path_field(_, _); end
-  def on_const_path_ref(_, _); end
-  def on_const_ref(_); end
-  def on_cvar(_); end
-  def on_def(_, _, _); end
-  def on_defined(_); end
-  def on_defs(_, _, _, _, _); end
-  def on_do_block(_, _); end
-  def on_dot2(_, _); end
-  def on_dot3(_, _); end
-  def on_dyna_symbol(_); end
-  def on_else(_); end
-  def on_elsif(_, _, _); end
-  def on_embdoc(_); end
-  def on_embdoc_beg(_); end
-  def on_embdoc_end(_); end
-  def on_embexpr_beg(_); end
-  def on_embexpr_end(_); end
-  def on_embvar(_); end
-  def on_ensure(_); end
+  def on_array(arg); end
+  def on_aryptn(arg, _, _, _); end
+  def on_assign(arg, _); end
+  def on_assign_error(arg, _); end
+  def on_assoc_new(arg, _); end
+  def on_assoc_splat(arg); end
+  def on_assoclist_from_args(arg); end
+  def on_backref(arg); end
+  def on_backtick(arg); end
+  def on_bare_assoc_hash(arg); end
+  def on_begin(arg); end
+  def on_binary(arg, _, _); end
+  def on_block_var(arg, _); end
+  def on_blockarg(arg); end
+  def on_bodystmt(arg, _, _, _); end
+  def on_brace_block(arg, _); end
+  def on_break(arg); end
+  def on_call(arg, _, _); end
+  def on_case(arg, _); end
+  def on_class(arg, _, _); end
+  def on_class_name_error(arg, _); end
+  def on_comma(arg); end
+  def on_command(arg, _); end
+  def on_command_call(arg, _, _, _); end
+  def on_comment(arg); end
+  def on_const(arg); end
+  def on_const_path_field(arg, _); end
+  def on_const_path_ref(arg, _); end
+  def on_const_ref(arg); end
+  def on_cvar(arg); end
+  def on_def(arg, _, _); end
+  def on_defined(arg); end
+  def on_defs(arg, _, _, _, _); end
+  def on_do_block(arg, _); end
+  def on_dot2(arg, _); end
+  def on_dot3(arg, _); end
+  def on_dyna_symbol(arg); end
+  def on_else(arg); end
+  def on_elsif(arg, _, _); end
+  def on_embdoc(arg); end
+  def on_embdoc_beg(arg); end
+  def on_embdoc_end(arg); end
+  def on_embexpr_beg(arg); end
+  def on_embexpr_end(arg); end
+  def on_embvar(arg); end
+  def on_ensure(arg); end
   def on_excessed_comma; end
-  def on_fcall(_); end
-  def on_field(_, _, _); end
-  def on_float(_); end
-  def on_fndptn(_, _, _, _); end
-  def on_for(_, _, _); end
-  def on_gvar(_); end
-  def on_hash(_); end
-  def on_heredoc_beg(_); end
-  def on_heredoc_dedent(_, _); end
-  def on_heredoc_end(_); end
-  def on_hshptn(_, _, _); end
-  def on_ident(_); end
-  def on_if(_, _, _); end
-  def on_if_mod(_, _); end
-  def on_ifop(_, _, _); end
-  def on_ignored_nl(_); end
-  def on_ignored_sp(_); end
-  def on_imaginary(_); end
-  def on_in(_, _, _); end
-  def on_int(_); end
-  def on_ivar(_); end
-  def on_kw(_); end
-  def on_kwrest_param(_); end
-  def on_label(_); end
-  def on_label_end(_); end
-  def on_lambda(_, _); end
-  def on_lbrace(_); end
-  def on_lbracket(_); end
-  def on_lparen(_); end
-  def on_magic_comment(_, _); end
-  def on_massign(_, _); end
-  def on_method_add_arg(_, _); end
-  def on_method_add_block(_, _); end
-  def on_mlhs_add(_, _); end
-  def on_mlhs_add_post(_, _); end
-  def on_mlhs_add_star(_, _); end
+  def on_fcall(arg); end
+  def on_field(arg, _, _); end
+  def on_float(arg); end
+  def on_fndptn(arg, _, _, _); end
+  def on_for(arg, _, _); end
+  def on_gvar(arg); end
+  def on_hash(arg); end
+  def on_heredoc_beg(arg); end
+  def on_heredoc_dedent(arg, _); end
+  def on_heredoc_end(arg); end
+  def on_hshptn(arg, _, _); end
+  def on_ident(arg); end
+  def on_if(arg, _, _); end
+  def on_if_mod(arg, _); end
+  def on_ifop(arg, _, _); end
+  def on_ignored_nl(arg); end
+  def on_ignored_sp(arg); end
+  def on_imaginary(arg); end
+  def on_in(arg, _, _); end
+  def on_int(arg); end
+  def on_ivar(arg); end
+  def on_kw(arg); end
+  def on_kwrest_param(arg); end
+  def on_label(arg); end
+  def on_label_end(arg); end
+  def on_lambda(arg, _); end
+  def on_lbrace(arg); end
+  def on_lbracket(arg); end
+  def on_lparen(arg); end
+  def on_magic_comment(arg, _); end
+  def on_massign(arg, _); end
+  def on_method_add_arg(arg, _); end
+  def on_method_add_block(arg, _); end
+  def on_mlhs_add(arg, _); end
+  def on_mlhs_add_post(arg, _); end
+  def on_mlhs_add_star(arg, _); end
   def on_mlhs_new; end
-  def on_mlhs_paren(_); end
-  def on_module(_, _); end
-  def on_mrhs_add(_, _); end
-  def on_mrhs_add_star(_, _); end
+  def on_mlhs_paren(arg); end
+  def on_module(arg, _); end
+  def on_mrhs_add(arg, _); end
+  def on_mrhs_add_star(arg, _); end
   def on_mrhs_new; end
-  def on_mrhs_new_from_args(_); end
-  def on_next(_); end
-  def on_nl(_); end
-  def on_nokw_param(_); end
-  def on_op(_); end
-  def on_opassign(_, _, _); end
-  def on_operator_ambiguous(_, _); end
-  def on_param_error(_, _); end
-  def on_params(_, _, _, _, _, _, _); end
-  def on_paren(_); end
-  def on_parse_error(_); end
-  def on_period(_); end
-  def on_program(_); end
-  def on_qsymbols_add(_, _); end
-  def on_qsymbols_beg(_); end
+  def on_mrhs_new_from_args(arg); end
+  def on_next(arg); end
+  def on_nl(arg); end
+  def on_nokw_param(arg); end
+  def on_op(arg); end
+  def on_opassign(arg, _, _); end
+  def on_operator_ambiguous(arg, _); end
+  def on_param_error(arg, _); end
+  def on_params(arg, _, _, _, _, _, _); end
+  def on_paren(arg); end
+  def on_parse_error(arg); end
+  def on_period(arg); end
+  def on_program(arg); end
+  def on_qsymbols_add(arg, _); end
+  def on_qsymbols_beg(arg); end
   def on_qsymbols_new; end
-  def on_qwords_add(_, _); end
-  def on_qwords_beg(_); end
+  def on_qwords_add(arg, _); end
+  def on_qwords_beg(arg); end
   def on_qwords_new; end
-  def on_rational(_); end
-  def on_rbrace(_); end
-  def on_rbracket(_); end
+  def on_rational(arg); end
+  def on_rbrace(arg); end
+  def on_rbracket(arg); end
   def on_redo; end
-  def on_regexp_add(_, _); end
-  def on_regexp_beg(_); end
-  def on_regexp_end(_); end
-  def on_regexp_literal(_, _); end
+  def on_regexp_add(arg, _); end
+  def on_regexp_beg(arg); end
+  def on_regexp_end(arg); end
+  def on_regexp_literal(arg, _); end
   def on_regexp_new; end
-  def on_rescue(_, _, _, _); end
-  def on_rescue_mod(_, _); end
-  def on_rest_param(_); end
+  def on_rescue(arg, _, _, _); end
+  def on_rescue_mod(arg, _); end
+  def on_rest_param(arg); end
   def on_retry; end
-  def on_return(_); end
+  def on_return(arg); end
   def on_return0; end
-  def on_rparen(_); end
-  def on_sclass(_, _); end
-  def on_semicolon(_); end
-  def on_sp(_); end
-  def on_stmts_add(_, _); end
+  def on_rparen(arg); end
+  def on_sclass(arg, _); end
+  def on_semicolon(arg); end
+  def on_sp(arg); end
+  def on_stmts_add(arg, _); end
   def on_stmts_new; end
-  def on_string_add(_, _); end
-  def on_string_concat(_, _); end
+  def on_string_add(arg, _); end
+  def on_string_concat(arg, _); end
   def on_string_content; end
-  def on_string_dvar(_); end
-  def on_string_embexpr(_); end
-  def on_string_literal(_); end
-  def on_super(_); end
-  def on_symbeg(_); end
-  def on_symbol(_); end
-  def on_symbol_literal(_); end
-  def on_symbols_add(_, _); end
-  def on_symbols_beg(_); end
+  def on_string_dvar(arg); end
+  def on_string_embexpr(arg); end
+  def on_string_literal(arg); end
+  def on_super(arg); end
+  def on_symbeg(arg); end
+  def on_symbol(arg); end
+  def on_symbol_literal(arg); end
+  def on_symbols_add(arg, _); end
+  def on_symbols_beg(arg); end
   def on_symbols_new; end
-  def on_tlambda(_); end
-  def on_tlambeg(_); end
-  def on_top_const_field(_); end
-  def on_top_const_ref(_); end
-  def on_tstring_beg(_); end
-  def on_tstring_content(_); end
-  def on_tstring_end(_); end
-  def on_unary(_, _); end
-  def on_undef(_); end
-  def on_unless(_, _, _); end
-  def on_unless_mod(_, _); end
-  def on_until(_, _); end
-  def on_until_mod(_, _); end
-  def on_var_alias(_, _); end
-  def on_var_field(_); end
-  def on_var_ref(_); end
-  def on_vcall(_); end
+  def on_tlambda(arg); end
+  def on_tlambeg(arg); end
+  def on_top_const_field(arg); end
+  def on_top_const_ref(arg); end
+  def on_tstring_beg(arg); end
+  def on_tstring_content(arg); end
+  def on_tstring_end(arg); end
+  def on_unary(arg, _); end
+  def on_undef(arg); end
+  def on_unless(arg, _, _); end
+  def on_unless_mod(arg, _); end
+  def on_until(arg, _); end
+  def on_until_mod(arg, _); end
+  def on_var_alias(arg, _); end
+  def on_var_field(arg); end
+  def on_var_ref(arg); end
+  def on_vcall(arg); end
   def on_void_stmt; end
-  def on_when(_, _, _); end
-  def on_while(_, _); end
-  def on_while_mod(_, _); end
-  def on_word_add(_, _); end
+  def on_when(arg, _, _); end
+  def on_while(arg, _); end
+  def on_while_mod(arg, _); end
+  def on_word_add(arg, _); end
   def on_word_new; end
-  def on_words_add(_, _); end
-  def on_words_beg(_); end
+  def on_words_add(arg, _); end
+  def on_words_beg(arg); end
   def on_words_new; end
-  def on_words_sep(_); end
-  def on_xstring_add(_, _); end
-  def on_xstring_literal(_); end
+  def on_words_sep(arg); end
+  def on_xstring_add(arg, _); end
+  def on_xstring_literal(arg); end
   def on_xstring_new; end
-  def on_yield(_); end
+  def on_yield(arg); end
   def on_yield0; end
   def on_zsuper; end
   def result; end
@@ -16418,15 +16679,100 @@ class Prism::Translation::Ripper < ::Prism::Compiler
 
   class << self
     def lex(src, filename = T.unsafe(nil), lineno = T.unsafe(nil), raise_errors: T.unsafe(nil)); end
+    def lex_state_name(state); end
     def parse(src, filename = T.unsafe(nil), lineno = T.unsafe(nil)); end
     def sexp(src, filename = T.unsafe(nil), lineno = T.unsafe(nil), raise_errors: T.unsafe(nil)); end
     def sexp_raw(src, filename = T.unsafe(nil), lineno = T.unsafe(nil), raise_errors: T.unsafe(nil)); end
+    def tokenize(*_arg0, **_arg1, &_arg2); end
   end
 end
 
 Prism::Translation::Ripper::BINARY_OPERATORS = T.let(T.unsafe(nil), Array)
 Prism::Translation::Ripper::EVENTS = T.let(T.unsafe(nil), Array)
+Prism::Translation::Ripper::EXPR_ARG = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_ARG_ANY = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_BEG = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_BEG_ANY = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_CLASS = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_CMDARG = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_DOT = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_END = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_ENDARG = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_ENDFN = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_END_ANY = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_FITEM = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_FNAME = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_LABEL = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_LABELED = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_MID = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_NONE = T.let(T.unsafe(nil), Integer)
+Prism::Translation::Ripper::EXPR_VALUE = T.let(T.unsafe(nil), Integer)
+
+class Prism::Translation::Ripper::Filter
+  def initialize(src, filename = T.unsafe(nil), lineno = T.unsafe(nil)); end
+
+  def column; end
+  def filename; end
+  def lineno; end
+  def parse(init = T.unsafe(nil)); end
+  def state; end
+
+  private
+
+  def on_default(event, token, data); end
+end
+
 Prism::Translation::Ripper::KEYWORDS = T.let(T.unsafe(nil), Array)
+Prism::Translation::Ripper::LEX_STATE_NAMES = T.let(T.unsafe(nil), Hash)
+
+class Prism::Translation::Ripper::Lexer < ::Prism::Translation::Ripper
+  def lex(raise_errors: T.unsafe(nil)); end
+  def parse(*_arg0, **_arg1, &_arg2); end
+  def scan(*_arg0, **_arg1, &_arg2); end
+end
+
+class Prism::Translation::Ripper::Lexer::Elem
+  def initialize(pos, event, tok, state, message = T.unsafe(nil)); end
+
+  def [](index); end
+  def event; end
+  def event=(_arg0); end
+  def inspect; end
+  def message; end
+  def message=(_arg0); end
+  def pos; end
+  def pos=(_arg0); end
+  def pretty_print(q); end
+  def state; end
+  def state=(_arg0); end
+  def to_a; end
+  def to_s; end
+  def tok; end
+  def tok=(_arg0); end
+end
+
+class Prism::Translation::Ripper::Lexer::State
+  def initialize(i); end
+
+  def &(i); end
+  def ==(i); end
+  def [](index); end
+  def allbits?(i); end
+  def anybits?(i); end
+  def inspect; end
+  def nobits?(i); end
+  def pretty_print(q); end
+  def to_i; end
+  def to_int; end
+  def to_s; end
+  def |(i); end
+
+  class << self
+    def cached(i); end
+  end
+end
+
+Prism::Translation::Ripper::Lexer::State::STATES = T.let(T.unsafe(nil), Hash)
 Prism::Translation::Ripper::PARSER_EVENTS = T.let(T.unsafe(nil), Array)
 Prism::Translation::Ripper::PARSER_EVENT_TABLE = T.let(T.unsafe(nil), Hash)
 Prism::Translation::Ripper::SCANNER_EVENTS = T.let(T.unsafe(nil), Array)
@@ -16881,6 +17227,8 @@ class Prism::TrueNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -16938,6 +17286,8 @@ class Prism::UndefNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -17017,6 +17367,8 @@ class Prism::UnlessNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { returns(T.nilable(Prism::ElseNode)) }
   def else_clause; end
@@ -17129,6 +17481,8 @@ class Prism::UntilNode < ::Prism::Node
 
   sig { returns(T.nilable(Prism::Location)) }
   def do_keyword_loc; end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
@@ -17670,6 +18024,8 @@ class Prism::WhenNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -17767,6 +18123,8 @@ class Prism::WhileNode < ::Prism::Node
   sig { returns(T.nilable(Prism::Location)) }
   def do_keyword_loc; end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -17861,6 +18219,8 @@ class Prism::XStringNode < ::Prism::Node
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
 
+  def each_child_node; end
+
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end
 
@@ -17950,6 +18310,8 @@ class Prism::YieldNode < ::Prism::Node
 
   sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.untyped]) }
   def deconstruct_keys(keys); end
+
+  def each_child_node; end
 
   sig { override.returns(T::Array[Prism::Reflection::Field]) }
   def fields; end

@@ -186,6 +186,9 @@ module Homebrew
         <% if @mode == :cabal %>
           depends_on "cabal-install" => :build
           depends_on "ghc" => :build
+          depends_on "gmp"
+
+          uses_from_macos "libffi"
         <% elsif @mode == :cmake %>
           depends_on "cmake" => :build
         <% elsif @mode == :crystal %>
@@ -202,7 +205,7 @@ module Homebrew
         <% elsif @mode == :python %>
           depends_on "#{latest_versioned_formula("python")}"
         <% elsif @mode == :ruby %>
-          uses_from_macos "ruby"
+          depends_on "ruby"
         <% elsif @mode == :rust %>
           depends_on "rust" => :build
         <% elsif @mode == :zig %>

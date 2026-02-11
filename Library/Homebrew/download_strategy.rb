@@ -107,7 +107,7 @@ class AbstractDownloadStrategy
   # directory.
   #
   # @api public
-  sig { overridable.params(block: T.untyped).void }
+  sig { overridable.params(block: T.nilable(T.proc.void)).void }
   def stage(&block)
     UnpackStrategy.detect(cached_location,
                           prioritize_extension: true,
@@ -118,7 +118,7 @@ class AbstractDownloadStrategy
     chdir(&block) if block
   end
 
-  sig { params(block: T.untyped).void }
+  sig { params(block: T.proc.void).void }
   def chdir(&block)
     entries = Dir["*"]
     raise "Empty archive" if entries.empty?
@@ -129,7 +129,9 @@ class AbstractDownloadStrategy
     end
 
     if File.directory? entries.fetch(0)
-      Dir.chdir(entries.fetch(0), &block)
+      # chdir yields the directory name as an argument, which is unused in our case
+      # However, sorbet requires us to pass a block with matching arity, so we use T.unsafe here
+      Dir.chdir(entries.fetch(0), &T.unsafe(block))
     else
       yield
     end
@@ -356,6 +358,12 @@ class AbstractFileDownloadStrategy < AbstractDownloadStrategy
     cached_location.basename.sub(/^[\da-f]{64}--/, "")
   end
 
+  sig { params(target_cached_location: Pathname).void }
+  def create_symlink_to_cached_download(target_cached_location)
+    symlink_location.dirname.mkpath
+    FileUtils.ln_s target_cached_location.relative_path_from(symlink_location.dirname), symlink_location, force: true
+  end
+
   private
 
   sig { returns(String) }
@@ -511,8 +519,7 @@ class CurlDownloadStrategy < AbstractFileDownloadStrategy
           temporary_path.rename(cached_location.to_s)
         end
 
-        symlink_location.dirname.mkpath
-        FileUtils.ln_s cached_location.relative_path_from(symlink_location.dirname), symlink_location, force: true
+        create_symlink_to_cached_download(cached_location)
       rescue CurlDownloadStrategyError
         raise if urls.empty?
 
@@ -610,6 +617,15 @@ class CurlDownloadStrategy < AbstractFileDownloadStrategy
     file_size = parsed_headers
                 .flat_map { |headers| [*headers["content-length"]&.to_i] }
                 .last
+
+    # Fallback to content-range header if content-length is not available.
+    # Content-Range format: "bytes start-end/total" or "bytes */total" or "bytes start-end/*"
+    if file_size.nil? || file_size.zero?
+      file_size = parsed_headers
+                  .flat_map { |headers| [*headers["content-range"]] }
+                  .filter_map { |range| Integer(range.split("/").last, 10, exception: false) }
+                  .last
+    end
 
     content_type = parsed_headers
                    .flat_map { |headers| [*headers["content-type"]] }
@@ -818,7 +834,7 @@ end
 #
 # @api public
 class NoUnzipCurlDownloadStrategy < CurlDownloadStrategy
-  sig { override.params(_block: T.untyped).void }
+  sig { override.params(_block: T.nilable(T.proc.void)).void }
   def stage(&_block)
     UnpackStrategy::Uncompressed.new(cached_location)
                                 .extract(basename:,

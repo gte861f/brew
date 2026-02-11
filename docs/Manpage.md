@@ -1526,11 +1526,13 @@ are also exported to avoid querying them multiple times. To help guarantee
 idempotence, this command produces no output when Homebrew's `bin` and `sbin`
 directories are first and second respectively in your `$PATH`. Consider adding
 evaluation of this command's output to your dotfiles (e.g. `~/.bash_profile` or
-~/.zprofile` on macOS and ~/.bashrc` or ~/.zshrc` on Linux) with:
-  `eval "$(brew shellenv)"\`
+~/.zprofile` on macOS and ~/.bashrc` or ~/.zshrc` on Linux)
+with e.g.:
+  `eval "$(brew shellenv zsh)"` or `eval "$(brew shellenv bash)"\`
 
-The shell can be specified explicitly with a supported shell name parameter.
-Unknown shells will output POSIX exports.
+The shell should be specified explicitly with a supported shell name parameter
+but will be detected automatically if not provided (but this may not be
+correct). Unknown shells will output POSIX exports.
 
 ### `source` \[*`formula`* ...\]
 
@@ -1875,6 +1877,12 @@ dependency for their stable builds.
 `--cask`
 
 : Include only casks.
+
+### `version-install` *`formula`*\[@*`version`*\] \[*`version`*\]
+
+Extract a specific *`version`* of *`formula`* into a personal tap and install
+it. The default tap is *`user`*/versions. *`user`* uses the GitHub username if
+available and the local username otherwise.
 
 ### `which-formula` \[`--explain`\] \[`--skip-update`\] *`command`* \[...\]
 
@@ -2784,9 +2792,13 @@ generated files are written to the current directory.
 
 : Generate API data without writing it to files.
 
-### `generate-man-completions`
+### `generate-man-completions` \[`--no-exit-code`\]
 
 Generate Homebrew's manpages and shell completions.
+
+`--no-exit-code`
+
+: Exit with code 0 even if no changes were made.
 
 ### `install-bundler-gems` \[`--groups=`\] \[`--add-groups=`\]
 
